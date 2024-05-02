@@ -7,6 +7,7 @@ const methodOverride = require("method-override")
 const { fruits, fruitsNew } = require("./models/fruits");
 const { meats, meatsFind } = require("./models/meats");
 const { veggies, veggiesNew,  } = require("./models/veggies");
+const { snacks, snacksNew } = require("./models/snacks");
 
 //----------MIDDLEWARE-----
 app.use(methodOverride("_method"));
@@ -44,6 +45,90 @@ app.get("/fruits/:indexofFruitsArray", (req, res) => {
        res.render("fruits/show", {fruit: fruits[idx], id: idx});
     }
 })
+
+
+// -------------- routes for snacks ------------ // 
+
+app.get("/snacks", (req, res) => {
+    // send arrray as response
+    //res.send(fruits);
+    res.render("snacks/index", { allSnacks: snacks, anotherSnack: snacksNew  });
+});
+app.get("/snacks/new", (req,res) => {
+    res.render("snacks/new.ejs")
+})
+
+// ***** Show Route**********
+app.get("/snacks/:indexofFruitsArray", (req, res) => {
+    let idx = parseInt(req.params.indexofSnacksArray);
+    if(idx >= snacks.length) {
+       // res.send("There is no fruit at that index")// one solution
+      // res.send(fruits);
+      res.render("404", {});
+    } else {
+       // res.send(fruits[idx])
+       //res.render("show", {})
+       res.render("snacks/show", {snack: snacks[idx], id: idx});
+    }
+})
+
+
+// -------------- edit page for snacks ------------ // 
+app.get("/fruits/:id/edit", (req,res) => {
+    const snack = snacks[req.params.id];
+    
+    let id = parseInt(req.params.id);
+
+    res.render("snacks/edit", {snack: snack, id:id  })
+})
+
+app.get("/snacks/:id/delete", (req,res) => {
+    const snackDel = snacks[req.params.id];
+    let idDel = parseInt(req.params.id);
+    res.render("snacks/delete", {snack: snackDel, id:idDel})
+})
+// ---- post new route for snacks  ----------- // 
+
+app.post("/snacks", (req,res) => {
+    console.log("form body", req.body);
+    if(req.body.readyToEat === "on") {
+        req.body.readyToEat = true;
+    } else {
+        req.body.readyToEat = false;
+    }
+    if(snacks.length > snacksNew.length) {
+        snacksNew.push(req.body)
+    } else {
+        snacks.push(req.body)
+    }
+    
+    res.redirect("/snacks")
+})
+
+
+//----------PUT Update snack ------------------- //
+
+app.put("/snacks/:id", (req,res) => {
+    console.log("--update snack-----", req.body);
+    if(req.body.readyToEat === "on") {
+        req.body.readyToEat = true;
+    }else {
+        req.body.readyToEat = false;
+    }
+    snacks[parseInt(req.params.id)] = req.body
+    res.redirect("/snacks")
+})
+
+// ------delete route for snack -------------- //
+
+app.delete("/snacks/:id", (req,res)=> {
+    fruits.splice(parseInt(req.params.id),1);
+    res.redirect("/snacks")
+})
+
+
+
+
 
 //---Edit page for get route-----------
 
