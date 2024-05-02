@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/veggies.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Veggies</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/veggies/newVeggie">Create a New Veggie</a>
+  </nav>
+    <section class="timeline">
+      <div class="timeline-row">
+        <div class="timeline-column">
+          <h2 class="title">Veggies<span class="animate" style="--i:1;"></span></h2>
+          <div class="timeline-box">
+            <% for( let index = 0; index < allVeggies.length; index++ ) { %>
+
+                <% let veggiesList = allVeggies[index] %>
+                <div class="timeline-content">
+                    <div class="content">
+                      <div class="year"><i class="bx bxs-calendar"></i>2021 - 2022</div>
+                      <h3 class="veggiesList"><%= veggiesList.name %></h3>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+                        voluptate natus consectetur suscipit aspernatur quos obcaecati
+                        dolore veniam debitis omnis.
+                      </p>
+                      <a href="/veggies/<%= index %>">Checkout more...</a>
+                    </div>
+                  </div>
+                <div>
+                </div>
+            <% } %>
+
+            <span class="animate" style="--i:2;"></span>
+          </div>
+        </div>
+
+        <div class="timeline-column">
+            <h2 class="title">More Veggies<span class="animate" style="--i:1;"></span></h2>
+            <div class="timeline-box">
+              <% for( let index = 0; index < another.length; index++ ) { %>
+  
+                  <% let anotherList = another[index] %>
+                  <div class="timeline-content">
+                      <div class="content">
+                        <div class="year"><i class="bx bxs-calendar"></i>2021 - 2022</div>
+                        <h3 class="veggiesList"><%= anotherList.name %></h3>
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+                          voluptate natus consectetur suscipit aspernatur quos obcaecati
+                          dolore veniam debitis omnis.
+                        </p>
+                        <a href="/veggies/<%= index %>">Checkout more...</a>
+                      </div>
+                    </div>
+                  <div>
+                  </div>
+              <% } %>
+  
+              <span class="animate" style="--i:2;"></span>
+            </div>
+        </div>
+
+      </div>
+    </section>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+      const veggiesListNames = document.querySelectorAll(".veggiesList");
+      console.log("collection",veggiesListNames);
+
+      for(let i =0; i < veggiesListNames.length; i++) {
+        let listNames = veggiesListNames[i];
+        console.log(listNames)
+
+        const typed = new Typed(listNames, {
+    strings: [listNames.textContent],
+    typeSpeed: 100,
+    backSpeed: 100,
+    backDelay: 500,
+    loop: true,
+   
+    showCursor: false,
+   
+})
+      }
+    </script>
+  </body>
+</html>

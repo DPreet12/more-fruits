@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit App</title>
+</head>
+<body>
+    <h1>Are you sure to delete meat?</h1>
+    <form action="/meats/<%= id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Yes, Delete <%= meat.name %>">
+    </form>
+    <button><a href="/meats/<%= id %>">NO!</a></button>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/fruits.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Fruits App</title>
+</head>
+<body>
+    <nav>
+        <a href="/fruits/new">Create a New Fruit</a>
+    </nav>
+<section class="timeline">
+   <div class="timeline-row">
+
+        <div class="timeline-column">
+            <h2 class="title">Fruits <span class="animate" style="--1:1"></span></h2>
+            <div class="timeline-box">
+                <% for(let i = 0; i < allFruits.length; i++) { %>
+                    <% let fruitIndexName = allFruits[i]; %>
+                    <div class="timeline-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2021 - 2022</div>
+                        
+                        <h3 class="veggie-name"><%= fruitIndexName.name %></h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe cum dolorum error excepturi nostrum, ratione, cupiditate doloremque ipsam numquam est aut neque nemo adipisci rem obcaecati iusto pariatur quisquam quas.</p>
+
+                        <a href="/fruits/<%= i %>">Checkout more...</a>
+                    </div>
+                    </div>
+                <% } %>
+                <span class="animate" style="--i:2;"></span>
+            </div>
+        </div>
+       
+        <div class="timeline-column">
+            <h2 class="title">More Fruits <spna class="animate" style="--i:1;"></spna></h2>
+            <div class="timeline-box">
+                <% for(let i = 0; i < anotherFruit.length; i++) { %>
+                    <% let anotherFruitName = anotherFruit[i]; %>
+                    <div class="timeline-content">
+                    <div class="content">
+                        <div class="year"><i class="bx bxs-calendar"></i>2021 - 2022</div>
+                        <h3 class="moreVeggie">
+                            <%= anotherFruitName.name %>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe cum dolorum error excepturi nostrum, ratione, cupiditate doloremque ipsam numquam est aut neque nemo adipisci rem obcaecati iusto pariatur quisquam quas.</p>
+                        <a href="/fruits/<%= i %>">Checkout more...</a>
+                    </div>
+                </div>
+                    <% } %>
+                    <span class="animate" style="--i:2;"></span>
+                </div>
+            </div>
+        </div>
+
+
+   
+</section>
+
+
+   
+</body>
+</html>

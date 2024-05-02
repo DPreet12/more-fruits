@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/meats.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Meats</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/meats/newMeat">Create a New Meat</a>
+  </nav>
+    <section class="timeline">
+      <div class="timeline-row">
+        <div class="timeline-column">
+          <h2 class="title">Meats<span class="animate" style="--i:1;"></span></h2>
+          <div class="timeline-box">
+            <% for( let index = 0; index < allMeats.length; index++ ) { %>
+
+                <% let meatList = allMeats[index] %>
+                <div class="timeline-content">
+                    <div class="content">
+                      <div class="year"><i class="bx bxs-calendar"></i>2021 - 2022</div>
+                      <h3 class="meatList"><%= meatList.name %></h3>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+                        voluptate natus consectetur suscipit aspernatur quos obcaecati
+                        dolore veniam debitis omnis.
+                      </p>
+                      <a href="/meats/<%= index %>">Checkout more...</a>
+                    </div>
+                  </div>
+                <div>
+                </div>
+            <% } %>
+
+            <span class="animate" style="--i:2;"></span>
+          </div>
+        </div>
+
+        <div class="timeline-column">
+            <h2 class="title">More Meats<span class="animate" style="--i:1;"></span></h2>
+            <div class="timeline-box">
+              <% for( let index = 0; index < anotherMeat.length; index++ ) { %>
+  
+                  <% let anotherMeatList = anotherMeat[index] %>
+                  <div class="timeline-content">
+                      <div class="content">
+                        <div class="year"><i class="bx bxs-calendar"></i>2021 - 2022</div>
+                        <h3 class="meatList"><%= anotherMeatList.name %></h3>
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+                          voluptate natus consectetur suscipit aspernatur quos obcaecati
+                          dolore veniam debitis omnis.
+                        </p>
+                        <a href="/meats/<%= index %>">Checkout more...</a>
+                      </div>
+                    </div>
+                  <div>
+                  </div>
+              <% } %>
+  
+              <span class="animate" style="--i:2;"></span>
+            </div>
+        </div>
+
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+     // 
+       // const meatListName = document.getElementsByClassName("meatList");
+       document.addEventListener("DOMContentLoaded", function() {
+
+
+      
+        const meatListName2 = document.querySelectorAll(".meatList");
+  console.log("meat list names",meatListName2)
+  //console.log("meat list names",meatListName2)
+  
+  meatListName2.forEach(function(eachName){
+console.log("eachName",eachName)
+
+const typed = new Typed(eachName, {
+    strings: [eachName.textContent],
+    typeSpeed: 100,
+    backSpeed: 100,
+    backDelay: 500,
+    loop: true,
+   
+    showCursor: false,
+   
+})
+  })
+})
+  
+    </script>
+  </body>
+</html>

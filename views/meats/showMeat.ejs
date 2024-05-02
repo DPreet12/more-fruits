@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meat List</title>
+</head>
+<body>
+    <h1><%= meat.name %></h1>
+    <p>Color: <%= meat.color %></p>
+    <% if (meat.readyToEat) { %>
+        <p>Ready to Eat 👍🏽</p>
+    <% } else { %>
+        <p>Not Ready to Eat 👎🏽</p>
+    <% } %>
+
+        <a href="/meats">Go back.....</a>
+        <button><a href="/meats/<%= id %>/editMeat">Edit</a></button>
+        <button> <a href="/meats/<%= id %>/delete">Delete Fruit</a></button>
+</body>
+</html>
